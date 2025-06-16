@@ -1,13 +1,16 @@
 import { Context, Hono } from 'hono'
-import { getPrisma } from './config/prismaFunction'
-import { getEnv } from "./utils/getEnv";
+import userRouter from "./routes/user.routes"
+import postRouter from "./routes/posts.routes"
 
 const app = new Hono();
 
-app.get('/', (c: Context) => {
-  const url = getEnv(c, "DATABASE_URL")
-  const port = getEnv(c, "")
-  return c.text(`Hello world: ${url}`);
+app.route("/users", userRouter)
+app.route("/posts", postRouter)
+
+app.get('/healthcheck', (c: Context) => {
+  return c.json({
+    message: "Everything is working fine..."
+  })
 })
 
 export default app

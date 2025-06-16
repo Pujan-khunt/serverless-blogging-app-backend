@@ -9,6 +9,7 @@
       "ESNext"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx"
-  },
+    "jsxImportSource": "hono/jsx",
+    "typeRoots": ["./types", "./node_modules/@cloudflare/workers-types/latest"]
+  }
 }
